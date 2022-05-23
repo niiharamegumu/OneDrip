@@ -1,7 +1,5 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 
-const fonts = { mono: `'Menlo', monospace` }
-
 const config: ThemeConfig = {
   initialColorMode: 'light',
   useSystemColorMode: true,
@@ -42,7 +40,6 @@ const theme = extendTheme({
     },
   },
   styles,
-  fonts,
   config,
 })
 
