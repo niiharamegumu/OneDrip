@@ -40,3 +40,5 @@ firebase.json
 firestore.rules
 storage.rules
 firestore.indexes.json
+ui-debug.log
+firestore-debug.log
