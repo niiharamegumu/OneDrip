@@ -19,7 +19,7 @@ const Sample: NextPage = () => {
         <Avatar name={`${currentUser!.displayName}`} src={`${currentUser?.photoURL}`} />
       </Header>
 
-      <Stack spacing={8} pt="30px">
+      <Stack spacing={8} position="absolute" top="45%" left="50%" transform="translate(-50%,-45%)">
         <HeadWithText title={`${currentUser?.displayName}`} text="名前"></HeadWithText>
         <HeadWithText title={`${currentUser?.email}`} text="メールアドレス"></HeadWithText>
         <HeadWithText
