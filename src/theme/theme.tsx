@@ -1,19 +1,29 @@
-import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
+import { extendTheme, type ThemeConfig, type ComponentStyleConfig } from '@chakra-ui/react'
 
 const config: ThemeConfig = {
   initialColorMode: 'light',
-  useSystemColorMode: true,
+  useSystemColorMode: false,
 }
 
 const styles = {
   global: {
     body: {
       bg: 'sTMainColor',
+      color: 'sTParagraph',
     },
   },
 }
 
+const Heading: ComponentStyleConfig = {
+  baseStyle: {
+    color: 'sTHeading',
+  },
+}
+
 const theme = extendTheme({
+  components: {
+    Heading,
+  },
   semanticTokens: {
     colors: {
       sTMainColor: {
