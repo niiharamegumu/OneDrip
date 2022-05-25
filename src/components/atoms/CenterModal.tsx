@@ -1,4 +1,4 @@
-import { Modal, ModalBody, ModalContent, ModalOverlay } from '@chakra-ui/react'
+import { Flex, Modal, ModalBody, ModalContent, ModalOverlay } from '@chakra-ui/react'
 import { FC, memo, ReactNode } from 'react'
 
 type Props = {
@@ -21,7 +21,9 @@ const CenterModal: FC<Props> = memo((props) => {
         borderColor="white"
       >
         <ModalBody textAlign="center" fontWeight="bold" p="30px">
-          {children}
+          <Flex flexDirection="column" gap={6} fontSize="xl">
+            {children}
+          </Flex>
         </ModalBody>
       </ModalContent>
     </Modal>
