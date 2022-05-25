@@ -1,4 +1,4 @@
-import { Button, Flex, Link, useDisclosure } from '@chakra-ui/react'
+import { Button, Link, useDisclosure } from '@chakra-ui/react'
 import { NextPage } from 'next'
 
 import CenterModal from '@/components/atoms/CenterModal'
@@ -15,19 +15,10 @@ const History: NextPage = () => {
         <DotButton onClickHnadler={onOpen} />
       </Header>
       <CenterModal onClose={onClose} isOpen={isOpen}>
-        <Flex flexDirection="column" gap={4}>
-          <Link href="/mypage/" _hover={{ border: 'none' }}>
-            マイページ
-          </Link>
-          <Button
-            bg="transparent"
-            _hover={{ bg: 'transparent' }}
-            _active={{ bg: 'transparent' }}
-            onClick={logout}
-          >
-            ログアウト
-          </Button>
-        </Flex>
+        <Link href="/mypage/" _hover={{ border: 'none' }}>
+          マイページ
+        </Link>
+        <Button onClick={logout}>ログアウト</Button>
       </CenterModal>
     </>
   )

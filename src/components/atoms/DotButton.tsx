@@ -10,15 +10,7 @@ type Props = {
 const DotButton: FC<Props> = memo((props) => {
   const { onClickHnadler } = props
   return (
-    <Button
-      type="button"
-      bg="transparent"
-      color="sTHeading"
-      fontSize="36px"
-      _hover={{ bg: 'transparent' }}
-      _active={{ bg: 'transparent' }}
-      onClick={onClickHnadler}
-    >
+    <Button type="button" color="sTHeading" fontSize="36px" onClick={onClickHnadler}>
       <RiMoreFill />
     </Button>
   )

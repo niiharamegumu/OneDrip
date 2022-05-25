@@ -44,17 +44,7 @@ const Home: NextPage = () => {
             <Box margin="auto">
               <Logo />
             </Box>
-            <Button
-              type="button"
-              onClick={login}
-              bg="transparent"
-              display="block"
-              m="auto"
-              p={0}
-              w="80%"
-              _hover={{ bg: 'transparent' }}
-              _active={{ bg: 'transparent' }}
-            >
+            <Button type="button" onClick={login} display="block" m="auto" w="80%">
               <Image
                 src="/google_login.png"
                 alt="google logoin button"

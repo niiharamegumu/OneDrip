@@ -17,9 +17,7 @@ export const ActionButton: FC<Props> = memo((props) => {
       border="1px solid"
       bg="sTButton"
       borderColor="sTSecondColor"
-      h="60px"
-      _hover={{ bg: 'sTButton' }}
-      _active={{ bg: 'sTButton' }}
+      py="20px"
     >
       {text}
     </Button>
