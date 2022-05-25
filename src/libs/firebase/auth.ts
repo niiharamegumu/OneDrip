@@ -4,6 +4,7 @@ import app from '@/libs/firebase/app'
 
 export const login = (): Promise<void> => {
   const provider = new GoogleAuthProvider()
+  provider.setCustomParameters({ prompt: 'select_account' })
   const auth = getAuth(app)
   return signInWithRedirect(auth, provider)
 }
