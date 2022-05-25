@@ -7,7 +7,6 @@ import { logout } from '@/libs/firebase/auth'
 
 const Sample: NextPage = () => {
   const { currentUser } = useCurrentUser()
-  useAuth()
 
   return (
     <>
