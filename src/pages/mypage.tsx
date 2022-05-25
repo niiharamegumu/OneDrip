@@ -1,23 +1,37 @@
-import { Avatar, Button } from '@chakra-ui/react'
+import { Avatar, Flex, Stack, Text } from '@chakra-ui/react'
 import { NextPage } from 'next'
+import { useCallback } from 'react'
 
-import { useAuth } from '@/hooks/useAuth'
+import HeadWithText from '@/components/atoms/HeadWithText'
+import { ActionButton } from '@/components/molecules/ActionButton'
+import ToggleDarkMode from '@/components/molecules/ToggleDarkMode'
+import Header from '@/components/organisms/Header'
 import { useCurrentUser } from '@/hooks/useCurrentUser'
 import { logout } from '@/libs/firebase/auth'
 
 const Sample: NextPage = () => {
   const { currentUser } = useCurrentUser()
+  const callBackLogout = useCallback(() => logout(), [])
 
   return (
     <>
-      <p>{currentUser!.displayName}</p>
-      <p>{currentUser!.email}</p>
-      <p>{currentUser!.emailVerified ? 'メール認証済み' : 'メール未認証'}</p>
-      <p>{currentUser!.displayName}</p>
-      <Avatar name={`${currentUser!.displayName}`} src={`${currentUser?.photoURL}`} />
-      <Button type="button" onClick={logout}>
-        ログアウトする
-      </Button>
+      <Header title="マイページ">
+        <Avatar name={`${currentUser!.displayName}`} src={`${currentUser?.photoURL}`} />
+      </Header>
+
+      <Stack spacing={8} pt="30px">
+        <HeadWithText title={`${currentUser?.displayName}`} text="名前"></HeadWithText>
+        <HeadWithText title={`${currentUser?.email}`} text="メールアドレス"></HeadWithText>
+        <HeadWithText
+          title={`${currentUser?.emailVerified ? '認証済み' : '未認証'}`}
+          text="メールの認証"
+        ></HeadWithText>
+        <Flex justify="center" gap={4} align="center">
+          <Text>ダークモード</Text>
+          <ToggleDarkMode />
+        </Flex>
+        <ActionButton text="ログアウトする" clickHandler={callBackLogout} />
+      </Stack>
     </>
   )
 }
