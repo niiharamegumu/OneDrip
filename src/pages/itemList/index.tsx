@@ -2,8 +2,8 @@ import { Button, Flex, Link, useDisclosure } from '@chakra-ui/react'
 import { format } from 'date-fns'
 import { NextPage } from 'next'
 
-import DotButton from '../../components/atoms/DotButton'
 import CenterModal from '@/components/atoms/CenterModal'
+import DotButton from '@/components/atoms/DotButton'
 import Header from '@/components/organisms/Header'
 import { logout } from '@/libs/firebase/auth'
 
