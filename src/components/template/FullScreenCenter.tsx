@@ -1,10 +1,12 @@
 import { Center } from '@chakra-ui/react'
+import { memo } from 'react'
 
 type Props = {
   children: React.ReactNode
 }
 
-const FullScreenCenter: React.FC<Props> = (props) => {
+// eslint-disable-next-line react/display-name
+const FullScreenCenter: React.FC<Props> = memo((props) => {
   const { children } = props
 
   return (
@@ -12,6 +14,6 @@ const FullScreenCenter: React.FC<Props> = (props) => {
       {children}
     </Center>
   )
-}
+})
 
 export default FullScreenCenter
