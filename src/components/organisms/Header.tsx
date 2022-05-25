@@ -12,7 +12,7 @@ const Header: FC<Props> = memo((props) => {
 
   return (
     <Flex as="header" justify="space-between" align="center" mb="20px">
-      <Heading fontSize="xl">{title}</Heading>
+      <Heading fontSize={{ base: '2xl', sm: '3xl' }}>{title}</Heading>
       {children}
     </Flex>
   )
