@@ -5,7 +5,7 @@ const Logo: React.FC = () => {
 
   return (
     // @ts-ignore no problem in operation, although type error appears
-    <ScaleFade initialScale={0} in sx={{ bg: 'white' }}>
+    <ScaleFade initialScale={0} in>
       <svg
         width="291"
         height="67"
