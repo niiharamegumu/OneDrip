@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import { FC } from 'react'
-import { RiHistoryLine, RiLayoutGridLine, RiAddFill } from 'react-icons/ri'
+import { RiHistoryLine, RiGridFill, RiAddFill } from 'react-icons/ri'
 
 import CircleLink from '@/components/atoms/CircleLink'
 
@@ -16,10 +16,10 @@ const CommonNav: FC = () => {
       align="center"
       gap={4}
     >
-      <CircleLink linkPath="/mypage">
-        <RiLayoutGridLine />
+      <CircleLink linkPath="/itemList/">
+        <RiGridFill />
       </CircleLink>
-      <CircleLink linkPath="/mypage">
+      <CircleLink linkPath="/itemList/history/">
         <RiHistoryLine />
       </CircleLink>
       <CircleLink linkPath="/mypage">
