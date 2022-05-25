@@ -1,13 +1,20 @@
 import 'focus-visible/dist/focus-visible'
-import { ChakraProvider, Container } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 
+import { useRouter } from 'next/router'
+import { useRequireLogin } from '@/hooks/useRequireLogin'
 import theme from '@/theme/theme'
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  const isAuthChecking = useRequireLogin()
+  const router = useRouter()
+  const isTopPage = router.pathname === '/'
+
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <Component {...pageProps} />
+      {!isTopPage && isAuthChecking ? <Component {...pageProps} /> : null}
+      {isTopPage && <Component {...pageProps} />}
     </ChakraProvider>
   )
 }
