@@ -6,7 +6,7 @@ import HeadWithText from '@/components/atoms/HeadWithText'
 import { ActionButton } from '@/components/molecules/ActionButton'
 import ToggleDarkMode from '@/components/molecules/ToggleDarkMode'
 import Header from '@/components/organisms/Header'
-import { useCurrentUser } from '@/hooks/useCurrentUser'
+import { useCurrentUser } from '@/hooks/auth/useCurrentUser'
 import { logout } from '@/libs/firebase/auth'
 
 const Sample: NextPage = () => {
