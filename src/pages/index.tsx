@@ -5,8 +5,8 @@ import { useEffect } from 'react'
 
 import Logo from '@/components/atoms/Logo'
 import FullScreenCenter from '@/components/template/FullScreenCenter'
-import { useAuth } from '@/hooks/useAuth'
-import { useCurrentUser } from '@/hooks/useCurrentUser'
+import { useAuth } from '@/hooks/auth/useAuth'
+import { useCurrentUser } from '@/hooks/auth/useCurrentUser'
 import { useInitalLoading } from '@/hooks/useInitalLoading'
 import { login } from '@/libs/firebase/auth'
 
