@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app'
 
 import { useRouter } from 'next/router'
 import CommonNav from '@/components/organisms/CommonNav'
-import { useRequireLogin } from '@/hooks/useRequireLogin'
+import { useRequireLogin } from '@/hooks/auth/useRequireLogin'
 import theme from '@/theme/theme'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
@@ -18,7 +18,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <Container
           maxW={{ base: '100%', sm: 'container.md' }}
           py="30px"
-          px="30px"
+          px="15px"
           minH="100vh"
           position="relative"
         >
