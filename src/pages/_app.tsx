@@ -1,9 +1,10 @@
 import 'focus-visible/dist/focus-visible'
-import { ChakraProvider, Container } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import type { AppProps } from 'next/app'
 
 import { useRouter } from 'next/router'
 import CommonNav from '@/components/organisms/CommonNav'
+import UserScreen from '@/components/template/UserScreen'
 import { useRequireLogin } from '@/hooks/auth/useRequireLogin'
 import theme from '@/theme/theme'
 
@@ -15,16 +16,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider resetCSS theme={theme}>
       {!isTopPage && isAuthChecking ? (
-        <Container
-          maxW={{ base: '100%', sm: 'container.md' }}
-          py="30px"
-          px="15px"
-          minH="100vh"
-          position="relative"
-        >
+        <UserScreen>
           <Component {...pageProps} />
           <CommonNav />
-        </Container>
+        </UserScreen>
       ) : null}
       {isTopPage && <Component {...pageProps} />}
     </ChakraProvider>
