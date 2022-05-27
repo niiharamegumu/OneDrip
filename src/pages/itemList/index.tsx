@@ -1,19 +1,54 @@
 import { Button, Link, useDisclosure } from '@chakra-ui/react'
-import { format } from 'date-fns'
 import { NextPage } from 'next'
 
 import CenterModal from '@/components/atoms/CenterModal'
-import DotButton from '@/components/atoms/DotButton'
+import DotButton from '@/components/atoms/button/DotButton'
+import Total from '@/components/molecules/Total'
+import CardGrid from '@/components/organisms/CardGrid'
 import Header from '@/components/organisms/Header'
+import ItemCard from '@/components/organisms/ItemCard'
+import FullScreenCenter from '@/components/template/FullScreenCenter'
+import { useCurrentUser } from '@/hooks/auth/useCurrentUser'
+import { useDocument } from '@/hooks/firestore/useDocument'
+import app from '@/libs/firebase/app'
 import { logout } from '@/libs/firebase/auth'
+import { formatDate } from '@/libs/functions'
+import { CoffeeItem } from '@/typs/coffeeItem'
 
 const ItemList: NextPage = () => {
-  const today = format(new Date(), 'yyyy-MM-dd')
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { currentUser } = useCurrentUser()
+  const { result, isLoading, error } = useDocument<CoffeeItem>(
+    app,
+    `users/${currentUser?.uid}/items`,
+    [
+      {
+        fieldPath: 'status',
+        opStr: '==',
+        value: 'active',
+      },
+    ],
+  )
+
+  if (isLoading) {
+    return (
+      <FullScreenCenter>
+        <p>Loading...</p>
+      </FullScreenCenter>
+    )
+  }
+
+  if (error !== null) {
+    return (
+      <FullScreenCenter>
+        <p>読み込みに失敗しました...!</p>
+      </FullScreenCenter>
+    )
+  }
 
   return (
     <>
-      <Header title={today}>
+      <Header title={formatDate(new Date())}>
         <DotButton onClickHnadler={onOpen} />
       </Header>
       <CenterModal onClose={onClose} isOpen={isOpen}>
@@ -22,6 +57,13 @@ const ItemList: NextPage = () => {
         </Link>
         <Button onClick={logout}>ログアウト</Button>
       </CenterModal>
+
+      <Total array={result} styleProps={{ mb: 4 }} />
+      <CardGrid>
+        {result!.map((item) => (
+          <ItemCard key={item.id} item={item} />
+        ))}
+      </CardGrid>
     </>
   )
 }
