@@ -32,7 +32,10 @@
     "moduleNameMapper": {
       "^@/(.*)$": "<rootDir>/src/$1"
     },
-    "globalSetup": "<rootDir>/__tests__/setupEnv.ts"
+    "globalSetup": "<rootDir>/__tests__/setupEnv.ts",
+    "testPathIgnorePatterns": [
+      "<rootDir>/__tests__/setupEnv.ts"
+    ]
   },
   "dependencies": {
     "@chakra-ui/react": "^2.1.0",
