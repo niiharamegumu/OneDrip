@@ -8,7 +8,11 @@ const formatPrettierCommand = (filenames) =>
     .map((f) => path.relative(process.cwd(), f))
     .join(' ')}`
 
+const testCommand = (filenames) =>
+  `jest --passWithNoTests ${filenames.map((f) => path.relative(process.cwd(), f)).join(' ')}`
+
 module.exports = {
   '*.{js,jsx,ts,tsx}': [buildEslintCommand],
   './**/*.{js,ts,tsx,json}': [formatPrettierCommand],
+  '**/__tests__/**/*.[jt]s?(x)': [testCommand],
 }
