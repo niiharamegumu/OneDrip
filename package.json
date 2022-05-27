@@ -34,7 +34,8 @@
     },
     "globalSetup": "<rootDir>/__tests__/setupEnv.ts",
     "testPathIgnorePatterns": [
-      "<rootDir>/__tests__/setupEnv.ts"
+      "<rootDir>/__tests__/setupEnv.ts",
+      "<rootDir>/__tests__/libs/firebase/authRules.test.ts"
     ]
   },
   "dependencies": {
