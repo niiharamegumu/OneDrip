@@ -58,6 +58,10 @@ const theme = extendTheme(
           _light: '#FFFFFE',
           _dark: '#020826',
         },
+        sTCard: {
+          _light: 'whiteAlpha.600',
+          _dark: 'whiteAlpha.200',
+        },
         sTNotice: '#EB5757',
       },
     },
