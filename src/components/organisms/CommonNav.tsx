@@ -9,7 +9,7 @@ const CommonNav: FC = () => {
     <Flex
       as="nav"
       position="fixed"
-      bottom={{ base: '30px', sm: '60px' }}
+      bottom={{ base: '20px', sm: '40px' }}
       left={0}
       w="100%"
       justify="center"
