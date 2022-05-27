@@ -2,7 +2,7 @@ import { Button, Link, useDisclosure } from '@chakra-ui/react'
 import { NextPage } from 'next'
 
 import CenterModal from '@/components/atoms/CenterModal'
-import DotButton from '@/components/atoms/DotButton'
+import DotButton from '@/components/atoms/button/DotButton'
 import Header from '@/components/organisms/Header'
 import { logout } from '@/libs/firebase/auth'
 
