@@ -38,14 +38,6 @@ const ItemList: NextPage = () => {
     )
   }
 
-  if (error !== null) {
-    return (
-      <FullScreenCenter>
-        <p>読み込みに失敗しました...!</p>
-      </FullScreenCenter>
-    )
-  }
-
   return (
     <>
       <Header title={formatDate(new Date())}>
@@ -58,12 +50,21 @@ const ItemList: NextPage = () => {
         <Button onClick={logout}>ログアウト</Button>
       </CenterModal>
 
-      <Total array={result} styleProps={{ mb: 4 }} />
-      <CardGrid>
-        {result!.map((item) => (
-          <ItemCard key={item.id} item={item} />
-        ))}
-      </CardGrid>
+      {error === null ? (
+        <>
+          <Total array={result} styleProps={{ mb: 4 }} />
+
+          <CardGrid>
+            {result!.map((item) => (
+              <ItemCard key={item.id} item={item} />
+            ))}
+          </CardGrid>
+        </>
+      ) : (
+        <FullScreenCenter>
+          <p>読み込みに失敗しました...!</p>
+        </FullScreenCenter>
+      )}
     </>
   )
 }
