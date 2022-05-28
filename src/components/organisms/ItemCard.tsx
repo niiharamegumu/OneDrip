@@ -1,6 +1,6 @@
 import { Box, GridItem, Heading, Text } from '@chakra-ui/react'
 import { isAfter } from 'date-fns'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 import HeadWithText from '@/components/molecules/HeadWithText'
 import NoticeBadge from '@/components/molecules/NoticeBadge'
@@ -13,14 +13,15 @@ type Props = {
   isElapsed?: boolean
 }
 
-const ItemCard: FC<Props> = (props) => {
+// eslint-disable-next-line react/display-name
+const ItemCard: FC<Props> = memo((props) => {
   const { item, isElapsed = true } = props
   const isActice = item.status === 'active'
   const isComplete = item.status === 'complete'
 
   return (
     <GridItem key={item.id} borderRadius="10px" overflow="hidden" position="relative" bg="sTCard">
-      <SkeletonImage url={item.img_url} altText={item.name} />
+      <SkeletonImage url={item.imgUrl} altText={item.name} />
       {isWithinPeriodOfTime(new Date(), item.peek.start, item.peek.end) && isActice ? (
         <NoticeBadge status="peek">Peek</NoticeBadge>
       ) : null}
@@ -54,6 +55,6 @@ const ItemCard: FC<Props> = (props) => {
       </Box>
     </GridItem>
   )
-}
+})
 
 export default ItemCard

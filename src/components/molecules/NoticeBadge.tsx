@@ -1,12 +1,13 @@
 import { Badge } from '@chakra-ui/react'
-import { FC } from 'react'
+import { FC, memo } from 'react'
 
 type Props = {
   status: 'peek' | 'after'
   children: string
 }
 
-const NoticeBadge: FC<Props> = (props) => {
+// eslint-disable-next-line react/display-name
+const NoticeBadge: FC<Props> = memo((props) => {
   const { children, status } = props
   const statusList = [
     {
@@ -41,6 +42,6 @@ const NoticeBadge: FC<Props> = (props) => {
       {children}
     </Badge>
   )
-}
+})
 
 export default NoticeBadge

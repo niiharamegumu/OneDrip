@@ -1,12 +1,13 @@
 import { Image, Skeleton } from '@chakra-ui/react'
-import { FC, useState } from 'react'
+import { FC, memo, useState } from 'react'
 
 type Props = {
   url: string
   altText: string
 }
 
-const SkeletonImage: FC<Props> = (props) => {
+// eslint-disable-next-line react/display-name
+const SkeletonImage: FC<Props> = memo((props) => {
   const { url, altText } = props
   const [imgLoaded, setImgLoaded] = useState(false)
 
@@ -22,6 +23,6 @@ const SkeletonImage: FC<Props> = (props) => {
       />
     </Skeleton>
   )
-}
+})
 
 export default SkeletonImage
