@@ -44,6 +44,7 @@ export const useDocument = <T>(app: FirebaseApp, path: string, whereOpts?: Where
       if (querySnapshot.empty) throw new Error('Empty Data')
     } catch (error) {
       setError(error as FirestoreError)
+      setIsLoading(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -61,6 +62,7 @@ export const useDocument = <T>(app: FirebaseApp, path: string, whereOpts?: Where
       if (querySnapshot.empty) throw new Error('Empty Data')
     } catch (error) {
       setError(error as FirestoreError)
+      setIsLoading(false)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
