@@ -62,6 +62,10 @@ const theme = extendTheme(
           _light: 'whiteAlpha.600',
           _dark: 'whiteAlpha.200',
         },
+        sTPlaceHolder: {
+          _light: 'blackAlpha.400',
+          _dark: 'whiteAlpha.700',
+        },
         sTNotice: '#EB5757',
       },
     },
