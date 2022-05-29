@@ -22,7 +22,7 @@ const CommonNav: FC = () => {
       <CircleLink linkPath="/itemList/history/">
         <RiHistoryLine />
       </CircleLink>
-      <CircleLink linkPath="/mypage">
+      <CircleLink linkPath="/item/add/">
         <RiAddFill />
       </CircleLink>
     </Flex>
