@@ -19,6 +19,7 @@ export const SubmitButton: FC<Props> = memo((props) => {
       py="20px"
       w="100%"
       isLoading={isLoading}
+      display="flex"
     >
       {text}
     </Button>
