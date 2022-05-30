@@ -9,7 +9,6 @@ import {
   Stack,
   Image,
 } from '@chakra-ui/react'
-import { getDownloadURL, getStorage, ref, uploadBytes, type UploadResult } from 'firebase/storage'
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -20,7 +19,7 @@ import Header from '@/components/organisms/Header'
 import { useCurrentUser } from '@/hooks/auth/useCurrentUser'
 import { useFile } from '@/hooks/useFile'
 import { logout } from '@/libs/firebase/auth'
-import { genStoragePath } from '@/libs/firebase/storage'
+import { downloadStorage, uploadStorage } from '@/libs/firebase/storage'
 
 const AddItem: FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -36,33 +35,12 @@ const AddItem: FC = () => {
   const onSubmit = async () => {
     if (file) {
       try {
-        const uploadResult = await uploadStorage(file)
+        const uploadResult = await uploadStorage(file, currentUser)
         const downloadResult = await downloadStorage(uploadResult)
         setImaurl(downloadResult)
       } catch (e) {
         console.log(e)
       }
-    }
-  }
-
-  const uploadStorage = async (file: File) => {
-    try {
-      const storage = getStorage()
-      const storageRef = ref(storage, genStoragePath(file, currentUser))
-      const result = await uploadBytes(storageRef, file)
-      console.log(result)
-      return result
-    } catch (e) {
-      throw new Error('Don`t upload file')
-    }
-  }
-  const downloadStorage = async (result: UploadResult) => {
-    try {
-      const storage = getStorage()
-      const storageRef = ref(storage, result.metadata.fullPath)
-      return await getDownloadURL(storageRef)
-    } catch (e) {
-      throw new Error('Don`t download file')
     }
   }
 
